@@ -1,0 +1,435 @@
+pbz-hosts connectivity test:
+
+Test 1: ping test from pbz to prz
+h1 ping -c4 h3:
+PING 10.0.0.50 (10.0.0.50) 56(84) bytes of data.
+
+--- 10.0.0.50 ping statistics ---
+4 packets transmitted, 0 received, 100% packet loss, time 3008ms
+
+
+
+h1 ping -c4 h4:
+PING 10.0.0.51 (10.0.0.51) 56(84) bytes of data.
+
+--- 10.0.0.51 ping statistics ---
+4 packets transmitted, 0 received, 100% packet loss, time 3001ms
+
+
+
+h2 ping -c4 h3:
+PING 10.0.0.50 (10.0.0.50) 56(84) bytes of data.
+
+--- 10.0.0.50 ping statistics ---
+4 packets transmitted, 0 received, 100% packet loss, time 3000ms
+
+
+
+h2 ping -c4 h4:
+PING 10.0.0.51 (10.0.0.51) 56(84) bytes of data.
+
+--- 10.0.0.51 ping statistics ---
+4 packets transmitted, 0 received, 100% packet loss, time 3000ms
+
+
+
+Test 2: ping test from prz to pbz
+h3 ping -c4 h1:
+PING 100.0.0.10 (100.0.0.10) 56(84) bytes of data.
+64 bytes from 100.0.0.10: icmp_seq=1 ttl=64 time=118 ms
+64 bytes from 100.0.0.10: icmp_seq=2 ttl=64 time=4.28 ms
+64 bytes from 100.0.0.10: icmp_seq=3 ttl=64 time=3.53 ms
+64 bytes from 100.0.0.10: icmp_seq=4 ttl=64 time=0.444 ms
+
+--- 100.0.0.10 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3007ms
+rtt min/avg/max/mdev = 0.444/31.586/118.076/49.955 ms
+
+
+h3 ping -c4 h2:
+PING 100.0.0.11 (100.0.0.11) 56(84) bytes of data.
+64 bytes from 100.0.0.11: icmp_seq=1 ttl=64 time=121 ms
+64 bytes from 100.0.0.11: icmp_seq=2 ttl=64 time=4.17 ms
+64 bytes from 100.0.0.11: icmp_seq=3 ttl=64 time=0.800 ms
+64 bytes from 100.0.0.11: icmp_seq=4 ttl=64 time=2.21 ms
+
+--- 100.0.0.11 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3006ms
+rtt min/avg/max/mdev = 0.800/32.101/121.208/51.459 ms
+
+
+h4 ping -c4 h1:
+PING 100.0.0.10 (100.0.0.10) 56(84) bytes of data.
+64 bytes from 100.0.0.10: icmp_seq=1 ttl=64 time=53.4 ms
+64 bytes from 100.0.0.10: icmp_seq=2 ttl=64 time=3.84 ms
+64 bytes from 100.0.0.10: icmp_seq=3 ttl=64 time=0.266 ms
+64 bytes from 100.0.0.10: icmp_seq=4 ttl=64 time=1.50 ms
+
+--- 100.0.0.10 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3002ms
+rtt min/avg/max/mdev = 0.266/14.773/53.481/22.384 ms
+
+
+h4 ping -c4 h2:
+PING 100.0.0.11 (100.0.0.11) 56(84) bytes of data.
+64 bytes from 100.0.0.11: icmp_seq=1 ttl=64 time=25.3 ms
+64 bytes from 100.0.0.11: icmp_seq=2 ttl=64 time=6.64 ms
+64 bytes from 100.0.0.11: icmp_seq=3 ttl=64 time=2.33 ms
+64 bytes from 100.0.0.11: icmp_seq=4 ttl=64 time=3.02 ms
+
+--- 100.0.0.11 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3005ms
+rtt min/avg/max/mdev = 2.331/9.345/25.383/9.403 ms
+
+
+Test 3: ping test from pbz & prz to dns service(100.0.0.25)
+h1 ping lb1:
+PING 100.0.0.25 (100.0.0.25) 56(84) bytes of data.
+64 bytes from 100.0.0.25: icmp_seq=1 ttl=255 time=136 ms
+64 bytes from 100.0.0.25: icmp_seq=2 ttl=255 time=1.22 ms
+64 bytes from 100.0.0.25: icmp_seq=3 ttl=255 time=1.27 ms
+64 bytes from 100.0.0.25: icmp_seq=4 ttl=255 time=0.633 ms
+
+--- 100.0.0.25 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3007ms
+rtt min/avg/max/mdev = 0.633/34.865/136.328/58.580 ms
+
+
+h2 ping -c4 lb1:
+PING 100.0.0.25 (100.0.0.25) 56(84) bytes of data.
+64 bytes from 100.0.0.25: icmp_seq=1 ttl=255 time=66.0 ms
+64 bytes from 100.0.0.25: icmp_seq=2 ttl=255 time=3.62 ms
+64 bytes from 100.0.0.25: icmp_seq=3 ttl=255 time=0.964 ms
+64 bytes from 100.0.0.25: icmp_seq=4 ttl=255 time=0.284 ms
+
+--- 100.0.0.25 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3006ms
+rtt min/avg/max/mdev = 0.284/17.733/66.061/27.930 ms
+
+
+h3 ping -c4 lb1:
+PING 100.0.0.25 (100.0.0.25) 56(84) bytes of data.
+64 bytes from 100.0.0.25: icmp_seq=1 ttl=255 time=132 ms
+64 bytes from 100.0.0.25: icmp_seq=2 ttl=255 time=5.94 ms
+64 bytes from 100.0.0.25: icmp_seq=3 ttl=255 time=3.88 ms
+64 bytes from 100.0.0.25: icmp_seq=4 ttl=255 time=1.58 ms
+
+--- 100.0.0.25 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3005ms
+rtt min/avg/max/mdev = 1.584/35.904/132.213/55.625 ms
+
+
+h4 ping -c4 lb1:
+PING 100.0.0.25 (100.0.0.25) 56(84) bytes of data.
+64 bytes from 100.0.0.25: icmp_seq=1 ttl=255 time=23.9 ms
+64 bytes from 100.0.0.25: icmp_seq=2 ttl=255 time=4.68 ms
+64 bytes from 100.0.0.25: icmp_seq=3 ttl=255 time=2.54 ms
+64 bytes from 100.0.0.25: icmp_seq=4 ttl=255 time=2.46 ms
+
+--- 100.0.0.25 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3008ms
+rtt min/avg/max/mdev = 2.469/8.408/23.932/9.006 ms
+
+
+Test 4: Ping test from pbz & prz to web service(100.0.0.45)
+h1 ping lb1:
+PING 100.0.0.45 (100.0.0.45) 56(84) bytes of data.
+64 bytes from 100.0.0.45: icmp_seq=1 ttl=255 time=133 ms
+64 bytes from 100.0.0.45: icmp_seq=2 ttl=255 time=4.08 ms
+64 bytes from 100.0.0.45: icmp_seq=3 ttl=255 time=2.23 ms
+64 bytes from 100.0.0.45: icmp_seq=4 ttl=255 time=2.06 ms
+
+--- 100.0.0.45 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3005ms
+rtt min/avg/max/mdev = 2.067/35.530/133.736/56.704 ms
+
+
+h2 ping lb2:
+PING 100.0.0.45 (100.0.0.45) 56(84) bytes of data.
+64 bytes from 100.0.0.45: icmp_seq=1 ttl=255 time=71.8 ms
+64 bytes from 100.0.0.45: icmp_seq=2 ttl=255 time=1.72 ms
+64 bytes from 100.0.0.45: icmp_seq=3 ttl=255 time=1.71 ms
+64 bytes from 100.0.0.45: icmp_seq=4 ttl=255 time=1.12 ms
+
+--- 100.0.0.45 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3005ms
+rtt min/avg/max/mdev = 1.124/19.103/71.851/30.455 ms
+
+
+h3 ping lb2:
+PING 100.0.0.45 (100.0.0.45) 56(84) bytes of data.
+64 bytes from 100.0.0.45: icmp_seq=1 ttl=255 time=101 ms
+64 bytes from 100.0.0.45: icmp_seq=2 ttl=255 time=7.65 ms
+64 bytes from 100.0.0.45: icmp_seq=3 ttl=255 time=3.00 ms
+64 bytes from 100.0.0.45: icmp_seq=4 ttl=255 time=1.38 ms
+
+--- 100.0.0.45 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3007ms
+rtt min/avg/max/mdev = 1.386/28.326/101.253/42.167 ms
+
+
+h4 ping lb1:
+PING 100.0.0.45 (100.0.0.45) 56(84) bytes of data.
+64 bytes from 100.0.0.45: icmp_seq=1 ttl=255 time=36.6 ms
+64 bytes from 100.0.0.45: icmp_seq=2 ttl=255 time=5.41 ms
+64 bytes from 100.0.0.45: icmp_seq=3 ttl=255 time=2.99 ms
+64 bytes from 100.0.0.45: icmp_seq=4 ttl=255 time=0.621 ms
+
+--- 100.0.0.45 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3007ms
+rtt min/avg/max/mdev = 0.621/11.430/36.693/14.683 ms
+
+
+Test 5: TCP Connection from pbz to prz
+Start an iperf server to h4 (port 1025)in prz
+
+
+ Establish TCP connection from h2(pbz) to h4(prz)
+nc: connect to 10.0.0.51 port 1025 (tcp) timed out: Operation now in progress
+
+
+
+Test 6: TCP Connection from prz to pbz
+Start an iperf server to h2 (port 1025)in pbz
+[1] 30496
+
+
+ Establish TCP connection from h4(prz) to h2(pbz):
+Connection to 100.0.0.11 1025 port [tcp/*] succeeded!
+
+------------------------------------------------------------
+Client connecting to 100.0.0.11, TCP port 1025
+TCP window size: 85.3 KByte (default)
+------------------------------------------------------------
+[  3] local 10.0.0.51 port 44846 connected with 100.0.0.11 port 1025
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.4 sec  2.62 MBytes  2.11 Mbits/sec
+
+
+Test 7: dns service test with dig for valid DNS(100.0.0.25) query
+h1 dig single host query lb1:
+
+; <<>> DiG 9.9.5-3ubuntu0.2-Ubuntu <<>> @100.0.0.25 dnstest
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 57421
+;; flags: qr aa; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;dnstest.			IN	A
+
+;; ANSWER SECTION:
+dnstest.		20	IN	A	100.0.0.88
+
+;; Query time: 60 msec
+;; SERVER: 100.0.0.25#53(100.0.0.25)
+;; WHEN: Tue May 24 19:43:09 CEST 2016
+;; MSG SIZE  rcvd: 48
+
+
+
+h2 dig single host query lb1:
+
+; <<>> DiG 9.9.5-3ubuntu0.2-Ubuntu <<>> @100.0.0.25 dnstest
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 60631
+;; flags: qr aa; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;dnstest.			IN	A
+
+;; ANSWER SECTION:
+dnstest.		20	IN	A	100.0.0.88
+
+;; Query time: 54 msec
+;; SERVER: 100.0.0.25#53(100.0.0.25)
+;; WHEN: Tue May 24 19:43:09 CEST 2016
+;; MSG SIZE  rcvd: 48
+
+
+
+h3 dig single host query lb1:
+
+; <<>> DiG 9.9.5-3ubuntu0.2-Ubuntu <<>> @100.0.0.25 dnstest
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 47168
+;; flags: qr aa; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;dnstest.			IN	A
+
+;; ANSWER SECTION:
+dnstest.		20	IN	A	100.0.0.88
+
+;; Query time: 57 msec
+;; SERVER: 100.0.0.25#53(100.0.0.25)
+;; WHEN: Tue May 24 19:43:09 CEST 2016
+;; MSG SIZE  rcvd: 48
+
+
+
+h4 dig single host query lb1:
+
+; <<>> DiG 9.9.5-3ubuntu0.2-Ubuntu <<>> @100.0.0.25 dnstest
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 10932
+;; flags: qr aa; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;dnstest.			IN	A
+
+;; ANSWER SECTION:
+dnstest.		20	IN	A	100.0.0.88
+
+;; Query time: 43 msec
+;; SERVER: 100.0.0.25#53(100.0.0.25)
+;; WHEN: Tue May 24 19:43:09 CEST 2016
+;; MSG SIZE  rcvd: 48
+
+
+
+Test 8: web server test with curl POST & PUT so that IDS allows the traffic to go through
+h3 getting or sending files using URL syntax(Only POST and PUT pass):
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><html>
+<title>Directory listing for /</title>
+<body>
+<h2>Directory listing for /</h2>
+<hr>
+<ul>
+<li><a href=".bash_history">.bash_history</a>
+<li><a href=".bash_logout">.bash_logout</a>
+<li><a href=".bashrc">.bashrc</a>
+<li><a href=".cache/">.cache/</a>
+<li><a href=".gitconfig">.gitconfig</a>
+<li><a href=".mininet_history">.mininet_history</a>
+<li><a href=".profile">.profile</a>
+<li><a href=".rnd">.rnd</a>
+<li><a href=".viminfo">.viminfo</a>
+<li><a href=".wireshark/">.wireshark/</a>
+<li><a href=".Xauthority">.Xauthority</a>
+<li><a href="assignments/">assignments/</a>
+<li><a href="click/">click/</a>
+<li><a href="loxigen/">loxigen/</a>
+<li><a href="mininet/">mininet/</a>
+<li><a href="oflops/">oflops/</a>
+<li><a href="oftest/">oftest/</a>
+<li><a href="openflow/">openflow/</a>
+<li><a href="pox/">pox/</a>
+</ul>
+<hr>
+</body>
+</html>
+
+
+h3 getting or sending files using URL syntax(Only POST and PUT pass):
+curl: (52) Empty reply from server
+
+
+h3 getting or sending files using URL syntax(Only POST and PUT pass):
+curl: (52) Empty reply from server
+
+
+h3 getting or sending files using URL syntax(Only POST and PUT pass):
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><html>
+<title>Directory listing for /</title>
+<body>
+<h2>Directory listing for /</h2>
+<hr>
+<ul>
+<li><a href=".bash_history">.bash_history</a>
+<li><a href=".bash_logout">.bash_logout</a>
+<li><a href=".bashrc">.bashrc</a>
+<li><a href=".cache/">.cache/</a>
+<li><a href=".gitconfig">.gitconfig</a>
+<li><a href=".mininet_history">.mininet_history</a>
+<li><a href=".profile">.profile</a>
+<li><a href=".rnd">.rnd</a>
+<li><a href=".viminfo">.viminfo</a>
+<li><a href=".wireshark/">.wireshark/</a>
+<li><a href=".Xauthority">.Xauthority</a>
+<li><a href="assignments/">assignments/</a>
+<li><a href="click/">click/</a>
+<li><a href="loxigen/">loxigen/</a>
+<li><a href="mininet/">mininet/</a>
+<li><a href="oflops/">oflops/</a>
+<li><a href="oftest/">oftest/</a>
+<li><a href="openflow/">openflow/</a>
+<li><a href="pox/">pox/</a>
+</ul>
+<hr>
+</body>
+</html>
+
+
+Test 9: web server test with curl DELETE, OPTION, UPDATE, DELETE etc so that IDS blocks the traffic
+web server test with curl DELETE, OPTION, UPDATE, DELETE etc so that IDS blocks the traffic
+h1 getting or sending files using URL syntax(Only POST and PUT pass blocking "UPDATE"):
+curl: (28) Operation timed out after 2002 milliseconds with 0 bytes received
+
+
+h2 getting or sending files using URL syntax(Only POST and PUT pass blocking "DELETE):
+curl: (28) Operation timed out after 2002 milliseconds with 0 bytes received
+
+
+h3 getting or sending files using URL syntax(Only POST and PUT pass blocking "INSERT"):
+curl: (28) Operation timed out after 2002 milliseconds with 0 bytes received
+
+
+h4 getting or sending files using URL syntax(Only POST and PUT pass blocking "cat /etc/passwd"):
+curl: (28) Operation timed out after 2001 milliseconds with 0 bytes received
+
+
+h1 getting or sending files using URL syntax(Only POST and PUT pass blocking "cat /var/log"):
+curl: (28) Operation timed out after 2001 milliseconds with 0 bytes received
+
+
+h2 getting or sending files using URL syntax(Only POST and PUT pass):
+curl: (28) Operation timed out after 2002 milliseconds with 0 bytes received
+
+
+h2 getting or sending files using URL syntax(Only POST and PUT pass blocking GET):
+curl: (28) Operation timed out after 2002 milliseconds with 0 bytes received
+
+
+h3 getting or sending files using URL syntax(Only POST and PUT pass blocking TRACE):
+* Rebuilt URL to: http://100.0.0.45:80/
+* Hostname was NOT found in DNS cache
+*   Trying 100.0.0.45...
+* Connected to 100.0.0.45 (100.0.0.45) port 80 (#0)
+> TRACE / HTTP/1.1
+> User-Agent: curl/7.35.0
+> Host: 100.0.0.45
+> Accept: */*
+> 
+* Operation timed out after 2000 milliseconds with 0 bytes received
+* Closing connection 0
+curl: (28) Operation timed out after 2000 milliseconds with 0 bytes received
+
+
+h4 getting or sending files using URL syntax(Only POST and PUT pass blockinh OPTIONS):
+curl: (28) Resolving timed out after 2520 milliseconds
+curl: (28) Operation timed out after 2000 milliseconds with 0 bytes received
+
+
+h1 getting or sending files using URL syntax(Only POST and PUT pass):
+curl: (28) Resolving timed out after 2522 milliseconds
+curl: (28) Operation timed out after 2002 milliseconds with 0 bytes received
+
+
+h4 getting or sending files using URL syntax(Only POST and PUT pass):
+curl: (28) Resolving timed out after 2522 milliseconds
+curl: (28) Operation timed out after 2002 milliseconds with 0 bytes received
+
+
+h3 getting or sending files using URL syntax(Only POST and PUT pass):
+curl: (28) Resolving timed out after 2521 milliseconds
+curl: (28) Operation timed out after 2001 milliseconds with 0 bytes received
+
+

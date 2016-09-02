@@ -1,0 +1,8 @@
+=================IDS Report============================
+    Input Packet Rate (pps): 1.39022357726 
+    Output Packet Rate(pps): 0.564330002822
+
+    Total # of input packets: 393 
+    Total # of output packets: 156 
+    Total # of malicious packets(dropped): 152
+   ========================================================= 

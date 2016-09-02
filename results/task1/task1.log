@@ -1,0 +1,13 @@
+pbz-hosts connectivity test:
+h1 ping -c 4 h2:
+PING 100.0.0.11 (100.0.0.11) 56(84) bytes of data.
+64 bytes from 100.0.0.11: icmp_seq=1 ttl=64 time=1068 ms
+64 bytes from 100.0.0.11: icmp_seq=2 ttl=64 time=92.9 ms
+64 bytes from 100.0.0.11: icmp_seq=3 ttl=64 time=0.526 ms
+64 bytes from 100.0.0.11: icmp_seq=4 ttl=64 time=0.052 ms
+
+--- 100.0.0.11 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3015ms
+rtt min/avg/max/mdev = 0.052/290.634/1068.999/450.979 ms, pipe 2
+
+
